@@ -1,12 +1,26 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
+import assets from "../store/assets";
+
+
 
 export default createStore({
   state: {
+   
+  },
+  getters: {
+  
+  },
+  //fixed
+  actions: {
+   
   },
   mutations: {
-  },
-  actions: {
+   
+ 
+    
   },
   modules: {
-  }
-})
+    assets,
+    
+  },
+});

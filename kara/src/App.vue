@@ -1,11 +1,22 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
-</template>
+  <sidebar-component></sidebar-component>
 
+  <router-view />
+</template>
+<script>
+// @ is an alias to /src
+import SidebarComponent from "../src/components/SidebarComponent.vue";
+
+export default {
+  components: { SidebarComponent },
+  data: function () {
+    return {
+      width: "0px",
+    };
+  },
+  methods: {},
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
