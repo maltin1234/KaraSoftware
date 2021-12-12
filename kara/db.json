@@ -9,7 +9,7 @@
       "compType": "hp",
       "date": "date"
     },
-        {
+    {
       "id": 2,
       "serialNum": "5CDN098BHBD",
       "studName": "Jon Jonasson",
@@ -18,7 +18,7 @@
       "compType": "hp",
       "date": "date"
     },
-        {
+    {
       "id": 3,
       "serialNum": "PX09CTY",
       "studName": "Tom Hardy",
@@ -27,7 +27,7 @@
       "compType": "hp",
       "date": "date"
     },
-        {
+    {
       "id": 4,
       "serialNum": "WC1309NY",
       "studName": "Jon Haraldsson",
@@ -36,7 +36,7 @@
       "compType": "hp",
       "date": "date"
     },
-          {
+    {
       "id": 5,
       "serialNum": "PC1O09Y",
       "studName": "Eli Eliasson",
@@ -45,7 +45,7 @@
       "compType": "hp",
       "date": "date"
     },
-          {
+    {
       "id": 6,
       "serialNum": "WC1NY34O3",
       "studName": "Tom Cruise",
@@ -53,9 +53,15 @@
       "status": "Needs repair",
       "compType": "hp",
       "date": "date"
+    },
+    {
+      "serialNum": "PCY3927",
+      "studName": "john",
+      "location": "malmo",
+      "compType": "",
+      "status": "In repair",
+      "date": "date",
+      "id": 7
     }
-    
-    
-    
   ]
 }

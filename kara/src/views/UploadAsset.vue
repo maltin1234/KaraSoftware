@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form>
+    <form @submit="submit">
       <div class="row">
         <div class="col col-6 mx-auto mt-2">
           <div class="form-group">
@@ -10,6 +10,7 @@
               class="form-control"
               id="formGroupExampleInput"
               placeholder="Example input"
+              v-model="serialNum"
             />
           </div>
         </div>
@@ -21,6 +22,7 @@
               class="form-control"
               id="formGroupExampleInput2"
               placeholder="Another input"
+              v-model="studName"
             />
           </div>
         </div>
@@ -34,6 +36,7 @@
               class="form-control"
               id="formGroupExampleInput"
               placeholder="Example input"
+              v-model="location"
             />
           </div>
         </div>
@@ -45,6 +48,7 @@
               class="form-control"
               id="formGroupExampleInput2"
               placeholder="Another input"
+              v-model="compType"
             />
           </div>
         </div>
@@ -58,6 +62,7 @@
               class="form-control"
               id="formGroupExampleInput"
               placeholder="Example input"
+              v-model="status"
             />
           </div>
         </div>
@@ -71,12 +76,15 @@
               class="form-control"
               id="formGroupExampleInput2"
               placeholder="Another input"
+              v-model="date"
             />
           </div>
         </div>
       </div>
       <div class="d-grid gap-2 col-6 mx-auto mb-4">
-        <button class="btn btn-dark mt-4" type="button">Submit</button>
+        <button class="btn btn-dark mt-4" type="submit" value="Submit">
+          Submit
+        </button>
       </div>
     </form>
   </div>
@@ -102,15 +110,35 @@
 // @ is an alias to /src
 //import SidebarComponent from "../src/components/SidebarComponent.vue";
 //import SidebarComponent from "../components/SidebarComponent.vue";
+import { mapActions } from "vuex";
 export default {
   name: "UploadAsset",
   components: {},
   data: function () {
     return {
       width: "0px",
+      serialNum: "",
+      studName: "",
+      location: "",
+      compType: "",
+      status: "",
+      date: "",
     };
   },
-  methods: {},
+  methods: {
+    ...mapActions(["addAsset"]),
+    submit() {
+      const registerAsset = {
+        serialNum: this.serialNum,
+        studName: this.studName,
+        location: this.location,
+        compType: this.compType,
+        status: this.status,
+        date: this.date,
+      };
+      this.addAsset(registerAsset);
+    },
+  },
 };
 </script>
 <style scoped>
