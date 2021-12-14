@@ -41,102 +41,44 @@
           <th scope="col">Date</th>
         </tr>
       </thead>
+      <thead>
+        <tr>
+          <th>
+            <input class="" v-model="searchId" />
+          </th>
+          <th>
+            <input class="" v-model="searchSerial" />
+          </th>
+          <th>
+            <input class="" v-model="searchName" />
+          </th>
+          <th>
+            <input class="" v-model="searchLocation" />
+          </th>
+          <th>
+            <input class="" v-model="searchStatus" />
+          </th>
+          <th>
+            <input class="" v-model="searchComptyp" />
+          </th>
+          <th>
+            <input class="" v-model="searchDate" />
+          </th>
+        </tr>
+      </thead>
       <tbody>
-        <tr>
-          <th scope="row"></th>
-          <td><input type="text" class="form-control" /></td>
-          <td><input type="text" class="form-control" /></td>
-          <td><input type="text" class="form-control" /></td>
-          <td><input type="text" class="form-control" /></td>
-          <td><input type="text" class="form-control" /></td>
-          <td><input type="text" class="form-control" /></td>
-        </tr>
-        <tr>
+        <tr v-for="product in filteredProducts" :key="product.id">
           <th class="text-edit" scope="row">Edit</th>
-          <td>5CDN098767</td>
-          <td>James Hardy</td>
-          <td>malmo</td>
-          <td>In repair</td>
-          <td>Hp</td>
-          <td>02/17/2009</td>
-        </tr>
-        <tr>
-          <th scope="row" class="text-edit">Edit</th>
-          <td>5CDN098BHBD</td>
-          <td>Jon Jonasson</td>
-          <td>malmo</td>
-          <td>Returned</td>
-          <td>Mac</td>
-          <td>02/17/2009</td>
-        </tr>
-        <tr>
-          <th scope="row" class="text-edit">Edit</th>
-          <td>PX09CTY</td>
-          <td>Tom Hardy</td>
-          <td>malmo</td>
-          <td>Borrowed</td>
-          <td>Mac</td>
-          <td>02/17/2009</td>
-        </tr>
-        <tr>
-          <th scope="row" class="text-edit">Edit</th>
-          <td>WC1309NY</td>
-          <td>Leon Kungen</td>
-          <td>malmo</td>
-          <td>Needs repair</td>
-          <td>Hp</td>
-          <td>02/17/2009</td>
-        </tr>
-        <tr>
-          <th scope="row" class="text-edit">Edit</th>
-          <td>PC1O09Y</td>
-          <td>Jon Haraldsson</td>
-          <td>malmo</td>
-          <td>Not returned</td>
-          <td>Hp</td>
-          <td>02/17/2009</td>
-        </tr>
-        <tr>
-          <th scope="row" class="text-edit">Edit</th>
-          <td>WC1NY34O3</td>
-          <td>Eli Eliasson</td>
-          <td>malmo</td>
-          <td>returned</td>
-          <td>Hp</td>
-          <td>02/17/2009</td>
-        </tr>
-        <tr>
-          <th scope="row" class="text-edit">Edit</th>
-          <td>PC1O09Y</td>
-          <td>Tom Cruise</td>
-          <td>malmo</td>
-          <td>In repair</td>
-          <td>Hp</td>
-          <td>02/17/2009</td>
-        </tr>
-        <tr>
-          <th scope="row" class="text-edit">Edit</th>
-          <td>PC1O09Y</td>
-          <td>Meredith Grey</td>
-          <td>malmo</td>
-          <td>Returned</td>
-          <td>Hp</td>
-          <td>02/17/2009</td>
-        </tr>
-        <tr>
-          <th scope="row" class="text-edit">Edit</th>
-          <td>PC1O09Y</td>
-          <td>Joe Burke</td>
-          <td>malmo</td>
-          <td>In repair</td>
-          <td>Hp</td>
-          <td>02/17/2009</td>
+          <td>{{ product.serialNum }}</td>
+          <td>{{ product.studName }}</td>
+          <td>{{ product.location }}</td>
+          <td>{{ product.status }}</td>
+          <td>{{ product.compType }}</td>
+          <td>{{ product.date }}</td>
         </tr>
       </tbody>
     </table>
-    <div v-for="product in products" :key="product.id">
-      {{ products }}
-    </div>
+    <button @click="test()"></button>
   </div>
 </template>
 
@@ -144,18 +86,49 @@
 export default {
   name: "FilterComponent",
   data() {
-    return {};
+    return {
+      searchId: "",
+      searchSerial: "",
+      searchName: "",
+      searchLocation: "",
+      searchStatus: "",
+      searchComptyp: "",
+      searchDate: "",
+      columns: [
+        "id",
+        "serialNum",
+        "studName",
+        "location",
+        "status",
+        "compType",
+        "date",
+      ],
+      userData: null,
+    };
   },
-  methods: {},
   computed: {
-    products() {
-      console.log(this.$store.state.assets);
-      return this.$store.state.assets;
+    filteredProducts() {
+      let userData = this.$store.state.assets.assets;
+      console.log("user", userData);
+      console.log("searchName", this.searchName);
+
+      if (this.searchName) {
+        return userData.filter((item) => {
+          console.log("item", item.studName, item);
+          return this.searchName
+            .toLowerCase()
+            .split(" ")
+            .every((v) => item.studName.toLowerCase().includes(v));
+        });
+      } else {
+        return userData;
+      }
     },
   },
   created() {
     this.$store.dispatch("fetchAssets");
   },
+  methods: {},
 };
 </script>
 
