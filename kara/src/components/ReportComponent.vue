@@ -69,19 +69,81 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="report in filteredReports" :key="report.id">
-          <th class="text-edit" scope="row">Edit</th>
-          <td>{{ report.serialNum }}</td>
-          <td>{{ report.reporter }}</td>
-          <td>{{ report.location }}</td>
-          <td>{{ report.damage }}</td>
-          <td>{{ report.status }}</td>
-          <td>{{ report.priority }}</td>
-          <td>{{ report.date }}</td>
+        <tr
+          v-for="report in filteredReports"
+          :key="report.id"
+          :class="{ editing: report == editedUser }"
+          v-cloak
+        >
+          <th class="text-edit" scope="row"></th>
+
+          <td>
+            <div class="view">
+              {{ report.serialNum }}
+            </div>
+            <div class="edit">
+              <input type="text" v-model="report.serialNum" />
+            </div>
+          </td>
+          <td>
+            <div class="view">
+              {{ report.reporter }}
+            </div>
+            <div class="edit">
+              <input type="text" v-model="report.reporter" />
+            </div>
+          </td>
+          <td>
+            <div class="view">
+              {{ report.location }}
+            </div>
+            <div class="edit">
+              <input type="text" v-model="report.location" />
+            </div>
+          </td>
+          <td>
+            <div class="view">
+              {{ report.damage }}
+            </div>
+            <div class="edit">
+              <input type="text" v-model="report.damage" />
+            </div>
+          </td>
+          <td>
+            <div class="view">
+              {{ report.status }}
+            </div>
+            <div class="edit">
+              <input type="text" v-model="report.status" />
+            </div>
+          </td>
+          <td>
+            <div class="view">
+              {{ report.priority }}
+            </div>
+            <div class="edit">
+              <input type="text" v-model="report.priority" />
+            </div>
+          </td>
+          <td>
+            <div class="view">
+              {{ report.date }}
+            </div>
+            <div class="edit">
+              <input type="text" v-model="report.date" />
+            </div>
+          </td>
+          <td>
+            <div class="view">
+              <button @click="editData(report)">edit</button>
+            </div>
+            <div class="edit">
+              <button @click="saveData(report)">save</button>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
-    <button @click="test()"></button>
   </div>
 </template>
 
@@ -90,6 +152,8 @@ export default {
   name: "ReportComponent",
   data() {
     return {
+      editMode: false,
+      editedUser: null,
       searchId: "",
       searchSerial: "",
       searchName: "",
@@ -132,6 +196,11 @@ export default {
       return reports.filter(
         (report) => !report.status.indexOf(this.searchStatus)
       );
+    },
+    saveData() {},
+    editData(user) {
+      this.beforEditCache = user;
+      this.editedUser = user;
     },
   },
 };
@@ -183,6 +252,18 @@ export default {
 }
 .text-edit {
   color: rgb(21, 193, 53);
+}
+[v-cloak] {
+  display: none;
+}
+.edit {
+  display: none;
+}
+.editing .edit {
+  display: block;
+}
+.editing .view {
+  display: none;
 }
 </style>
 <style lang="scss"></style>
