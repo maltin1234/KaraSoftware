@@ -50,18 +50,26 @@
         </div>
       </div>
       <div class="row">
-        <div class="col col-12 mx-auto">
-          <div class="form-group">
-            <label for="formGroupExampleInput">Status</label>
-            <input
-              type="text"
-              class="form-control"
-              id="formGroupExampleInput"
-              placeholder="Example input"
-            />
-          </div>
+        <div class="col">
+          <label for="exampleDataList" class="form-label"
+            >Status on computer</label
+          >
+          <input
+            class="form-control"
+            list="datalistOptions"
+            id="exampleDataList"
+            placeholder="Type to search..."
+          />
+          <datalist id="datalistOptions">
+            <option value="Ongoing repair"></option>
+            <option value="Damaged turned in"></option>
+            <option value="Borrowed"></option>
+            <option value="Not Borrowed"></option>
+            <option value="Needs to be sent for repair"></option>
+          </datalist>
         </div>
       </div>
+
       <div class="row">
         <div class="col col-12 mx-auto">
           <div class="form-group">

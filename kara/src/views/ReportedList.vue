@@ -1,12 +1,16 @@
 <template>
-  <div class=""></div>
+  <div class="">
+    <report-component></report-component>
+  </div>
 </template>
 
 <script>
 // @ is an alias to /src
-//import SidebarComponent from "../components/SidebarComponent.vue";
+import ReportComponent from "../components/ReportComponent.vue";
 export default {
   name: "ReportedList",
-  components: {},
+  components: {
+    ReportComponent,
+  },
 };
 </script>

@@ -63,6 +63,14 @@
                   >Report damaged assets
                 </a>
               </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active bg-dark mb-4"
+                  aria-current="page"
+                  href="#ReportedList"
+                  >List of reported errands
+                </a>
+              </li>
             </ul>
             <form class="d-flex">
               <input

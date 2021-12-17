@@ -1,6 +1,6 @@
 import { createStore } from "vuex";
 import assets from "../store/assets";
-
+import reports from "../store/reports";
 
 
 export default createStore({
@@ -21,6 +21,7 @@ export default createStore({
   },
   modules: {
     assets,
+    reports
     
   },
 });

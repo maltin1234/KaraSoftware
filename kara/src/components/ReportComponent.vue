@@ -34,13 +34,15 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">S/N</th>
-          <th scope="col">Stud Name</th>
+          <th scope="col">Reporter</th>
           <th scope="col">Location</th>
+          <th scope="col">Damage</th>
           <th scope="col">Status</th>
-          <th scope="col">CompType</th>
+          <th scope="col">Priority</th>
           <th scope="col">Date</th>
         </tr>
       </thead>
+
       <thead>
         <tr>
           <th>
@@ -67,14 +69,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="product in filteredProducts" :key="product.id">
+        <tr v-for="report in filteredReports" :key="report.id">
           <th class="text-edit" scope="row">Edit</th>
-          <td>{{ product.serialNum }}</td>
-          <td>{{ product.studName }}</td>
-          <td>{{ product.location }}</td>
-          <td>{{ product.status }}</td>
-          <td>{{ product.compType }}</td>
-          <td>{{ product.date }}</td>
+          <td>{{ report.serialNum }}</td>
+          <td>{{ report.reporter }}</td>
+          <td>{{ report.location }}</td>
+          <td>{{ report.damage }}</td>
+          <td>{{ report.status }}</td>
+          <td>{{ report.priority }}</td>
+          <td>{{ report.date }}</td>
         </tr>
       </tbody>
     </table>
@@ -84,7 +87,7 @@
 
 <script>
 export default {
-  name: "FilterComponent",
+  name: "ReportComponent",
   data() {
     return {
       searchId: "",
@@ -94,21 +97,13 @@ export default {
       searchStatus: "",
       searchComptyp: "",
       searchDate: "",
-      columns: [
-        "id",
-        "serialNum",
-        "studName",
-        "location",
-        "status",
-        "compType",
-        "date",
-      ],
+
       userData: null,
     };
   },
   computed: {
-    filteredProducts() {
-      let userData = this.$store.state.assets.assets;
+    filteredReports() {
+      let userData = this.$store.state.reports.reports;
       console.log("user", userData);
       console.log("searchName", this.searchName);
 
@@ -118,24 +113,24 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch("fetchAssets");
+    this.$store.dispatch("fetchReports");
   },
   methods: {
-    filterProductsBySerial(products) {
-      return products.filter(
-        (product) => !product.serialNum.indexOf(this.searchSerial)
+    filterProductsBySerial(reports) {
+      return reports.filter(
+        (report) => !report.serialNum.indexOf(this.searchSerial)
       );
     },
 
-    filterProductsByName(products) {
-      return products.filter(
-        (product) => !product.studName.indexOf(this.searchName)
+    filterProductsByName(reports) {
+      return reports.filter(
+        (report) => !report.reporter.indexOf(this.searchName)
       );
     },
 
-    filterProductsByCategory(products) {
-      return products.filter(
-        (product) => !product.status.indexOf(this.searchStatus)
+    filterProductsByCategory(reports) {
+      return reports.filter(
+        (report) => !report.status.indexOf(this.searchStatus)
       );
     },
   },
