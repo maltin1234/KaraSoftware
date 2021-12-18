@@ -62,52 +62,57 @@
     {
       "id": 1,
       "serialNum": "5CDN098767",
-       "reporter": "James Hardy",
+ "reporter": "James Hardy",
       "location": "malmo",
       "damage": "This is broken down",
       "status": "In repair",
       "priority":"5",
-      "date": "date"
+      "date": "date",
+      " edit": null
     },
         {
       "id": 2,
       "serialNum": "5CDN098BHBD",
-        "reporter": "James Hardy",
+ "reporter": "James Hardy",
       "location": "malmo",
       "damage": "This is broken down",
       "status": "In repair",
       "priority":"5",
-      "date": "date"
+      "date": "date",
+      " edit": null
     },
         {
       "id": 3,
       "serialNum": "PX09CTY",
-      "reporter": "James Hardy",
+    "reporter": "James Hardy",
       "location": "malmo",
       "damage": "This is broken down",
       "status": "In repair",
       "priority":"5",
-      "date": "date"
+      "date": "date",
+      " edit": null
     },
         {
       "id": 4,
       "serialNum": "WC1309NY",
-       "reporter": "James Hardy",
+   "reporter": "James Hardy",
       "location": "malmo",
       "damage": "This is broken down",
       "status": "In repair",
       "priority":"5",
-      "date": "date"
+      "date": "date",
+      " edit": null
     },
           {
       "id": 5,
       "serialNum": "PC1O09Y",
-       "reporter": "James Hardy",
+     "reporter": "James Hardy",
       "location": "malmo",
       "damage": "This is broken down",
       "status": "In repair",
       "priority":"5",
-      "date": "date"
+      "date": "date",
+      " edit": null
     },
           {
       "id": 6,
@@ -117,7 +122,8 @@
       "damage": "This is broken down",
       "status": "In repair",
       "priority":"5",
-      "date": "date"
+      "date": "date",
+      " edit": null
     }
     
     

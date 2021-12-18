@@ -69,77 +69,106 @@
         </tr>
       </thead>
       <tbody>
-        <tr
-          v-for="report in filteredReports"
-          :key="report.id"
-          :class="{ editing: report == editedUser }"
-          v-cloak
-        >
-          <th class="text-edit" scope="row"></th>
+        <tr v-for="report in filteredReports" :key="report.id">
+          <td></td>
 
           <td>
-            <div class="view">
-              {{ report.serialNum }}
+            <div v-show="report.edit !== 'serialNum'">
+              <label @dblclick="report.edit = 'serialNum'">
+                @{{ report.serialNum }}
+              </label>
             </div>
-            <div class="edit">
-              <input type="text" v-model="report.serialNum" />
-            </div>
+            <input
+              name="serialNum"
+              v-show="report.edit == 'serialNum'"
+              v-model="report.serialNum"
+              v-on:blur="report.edit = ''"
+              @keyup.enter="report.edit = ''"
+            />
           </td>
           <td>
-            <div class="view">
-              {{ report.reporter }}
+            <div v-show="report.edit !== 'reporter'">
+              <label @dblclick="report.edit = 'reporter'">
+                @{{ report.reporter }}
+              </label>
             </div>
-            <div class="edit">
-              <input type="text" v-model="report.reporter" />
-            </div>
+            <input
+              name="reporter"
+              v-show="report.edit == 'reporter'"
+              v-model="report.reporter"
+              v-on:blur="report.edit = ''"
+              @keyup.enter="report.edit = ''"
+            />
           </td>
           <td>
-            <div class="view">
-              {{ report.location }}
+            <div v-show="report.edit !== 'location'">
+              <label @dblclick="report.edit = 'location'">
+                @{{ report.location }}
+              </label>
             </div>
-            <div class="edit">
-              <input type="text" v-model="report.location" />
-            </div>
+            <input
+              name="location"
+              v-show="report.edit == 'location'"
+              v-model="report.location"
+              v-on:blur="report.edit = ''"
+              @keyup.enter="report.edit = ''"
+            />
           </td>
           <td>
-            <div class="view">
-              {{ report.damage }}
+            <div v-show="report.edit !== 'damage'">
+              <label @dblclick="report.edit = 'damage'">
+                @{{ report.damage }}
+              </label>
             </div>
-            <div class="edit">
-              <input type="text" v-model="report.damage" />
-            </div>
+            <input
+              name="damage"
+              v-show="report.edit == 'damage'"
+              v-model="report.damage"
+              v-on:blur="report.edit = ''"
+              @keyup.enter="report.edit = ''"
+            />
           </td>
           <td>
-            <div class="view">
-              {{ report.status }}
+            <div v-show="report.edit !== 'status'">
+              <label @dblclick="report.edit = 'status'">
+                @{{ report.status }}
+              </label>
             </div>
-            <div class="edit">
-              <input type="text" v-model="report.status" />
-            </div>
+            <input
+              name="status"
+              v-show="report.edit == 'status'"
+              v-model="report.status"
+              v-on:blur="report.edit = ''"
+              @keyup.enter="report.edit = ''"
+            />
           </td>
           <td>
-            <div class="view">
-              {{ report.priority }}
+            <div v-show="report.edit !== 'priority'">
+              <label @dblclick="report.edit = 'priority'">
+                @{{ report.priority }}
+              </label>
             </div>
-            <div class="edit">
-              <input type="text" v-model="report.priority" />
-            </div>
+            <input
+              name="priority"
+              v-show="report.edit == 'priority'"
+              v-model="report.priority"
+              v-on:blur="report.edit = ''"
+              @keyup.enter="report.edit = ''"
+            />
           </td>
           <td>
-            <div class="view">
-              {{ report.date }}
+            <div v-show="report.edit !== 'date'">
+              <label @dblclick="report.edit = 'date'">
+                @{{ report.date }}
+              </label>
             </div>
-            <div class="edit">
-              <input type="text" v-model="report.date" />
-            </div>
-          </td>
-          <td>
-            <div class="view">
-              <button @click="editData(report)">edit</button>
-            </div>
-            <div class="edit">
-              <button @click="saveData(report)">save</button>
-            </div>
+            <input
+              name="date"
+              v-show="report.edit == 'date'"
+              v-model="report.date"
+              v-on:blur="report.edit = ''"
+              @keyup.enter="report.edit = ''"
+            />
           </td>
         </tr>
       </tbody>
@@ -198,10 +227,6 @@ export default {
       );
     },
     saveData() {},
-    editData(user) {
-      this.beforEditCache = user;
-      this.editedUser = user;
-    },
   },
 };
 </script>
@@ -252,18 +277,6 @@ export default {
 }
 .text-edit {
   color: rgb(21, 193, 53);
-}
-[v-cloak] {
-  display: none;
-}
-.edit {
-  display: none;
-}
-.editing .edit {
-  display: block;
-}
-.editing .view {
-  display: none;
 }
 </style>
 <style lang="scss"></style>
