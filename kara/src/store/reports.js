@@ -1,9 +1,23 @@
 import axios from 'axios';
 
 export default {
- state :{
-  reports: []
+  state: {
+     strict: true,
+    reports: [],
+    newArr:[]
+  
+  },
+  getters: {
+    getReport: (state) => (serialNum) => {
+      console.log(state.reports)
+    return state.reports.find(x => x.serialNum === serialNum)
     },
+    reported: (state) => state.reports,
+    //        getQuoteById: (state) => (id) => {
+    //   console.log(state.quotes)
+    //   return state.quotes.find(quote => quote.id === id)
+    // }, 
+},
     actions: {
         async fetchReports({ commit }) {
             const response = await axios.get(
@@ -14,7 +28,14 @@ export default {
         },
     },
     mutations: {
-        setReports: (state, reports) => (state.reports = reports),
-    }
+      setReports: (state, payload) => (state.reports = payload),
+    updateMessage: (state) => (serialNum) => {
+      console.log(state.reports)
+    return state.reports.find(x => x.serialNum === serialNum)
+    },
+}
+    
+    
+
 
 };

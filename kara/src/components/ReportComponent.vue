@@ -81,7 +81,7 @@
             <input
               name="serialNum"
               v-show="report.edit == 'serialNum'"
-              v-model="report.serialNum"
+              v-model="serialNum"
               v-on:blur="report.edit = ''"
               @keyup.enter="report.edit = ''"
             />
@@ -195,14 +195,22 @@ export default {
     };
   },
   computed: {
+    serialNum: {
+      get() {
+        console.log(this.$store.getters["getReport"]("5CDN098767"));
+        return this.$store.getters["getReport"]("5CDN098767");
+      },
+      set(value) {
+        this.$store.commit("updateMessage", value);
+      },
+    },
+
     filteredReports() {
       let userData = this.$store.state.reports.reports;
       console.log("user", userData);
       console.log("searchName", this.searchName);
 
-      return this.filterProductsBySerial(
-        this.filterProductsByName(this.filterProductsByCategory(userData))
-      );
+      return this.filterProductsBySerial(this.filterProductsByName(userData));
     },
   },
   created() {
@@ -210,6 +218,7 @@ export default {
   },
   methods: {
     filterProductsBySerial(reports) {
+      console.log("report", reports);
       return reports.filter(
         (report) => !report.serialNum.indexOf(this.searchSerial)
       );
