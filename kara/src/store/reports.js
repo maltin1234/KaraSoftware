@@ -29,13 +29,12 @@ export default {
     },
     mutations: {
       setReports: (state, payload) => (state.reports = payload),
-    updateMessage: (state) => (serialNum) => {
-      console.log(state.reports)
-    return state.reports.find(x => x.serialNum === serialNum)
+    updateMessage: (state, payload) => (state.reports = payload)
+   
     },
 }
     
     
 
 
-};
+

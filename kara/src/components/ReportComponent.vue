@@ -1,24 +1,4 @@
 <template>
-  <div class="input-group mb-3 filter-one">
-    <select class="form-select" id="inputGroupSelect01">
-      <option selected>Choose class</option>
-      <option value="1">Nature</option>
-      <option value="2">Technical</option>
-      <option value="3">Samhälle</option>
-      <option value="3"></option>
-    </select>
-    <button type="button" class="btn btn-success">Filter</button>
-  </div>
-  <div class="input-group mb-3 filter-two">
-    <select class="form-select" id="inputGroupSelect01">
-      <option selected>Choose year</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-    <button type="button" class="btn btn-success">Filter</button>
-  </div>
-
   <div class="fixed-bottom">
     <nav aria-label="Page navigation example">
       <ul class="pagination">
@@ -195,46 +175,23 @@ export default {
     };
   },
   computed: {
-    serialNum: {
-      get() {
-        console.log(this.$store.getters["getReport"]("5CDN098767"));
-        return this.$store.getters["getReport"]("5CDN098767");
-      },
-      set(value) {
-        this.$store.commit("updateMessage", value);
-      },
-    },
+    serialNum: {},
 
     filteredReports() {
       let userData = this.$store.state.reports.reports;
       console.log("user", userData);
       console.log("searchName", this.searchName);
 
-      return this.filterProductsBySerial(this.filterProductsByName(userData));
+      return userData
+        .filter((report) => !report.serialNum.indexOf(this.searchSerial))
+        .filter((report) => !report.reporter.indexOf(this.searchName))
+        .filter((report) => !report.status.indexOf(this.searchStatus));
     },
   },
   created() {
     this.$store.dispatch("fetchReports");
   },
   methods: {
-    filterProductsBySerial(reports) {
-      console.log("report", reports);
-      return reports.filter(
-        (report) => !report.serialNum.indexOf(this.searchSerial)
-      );
-    },
-
-    filterProductsByName(reports) {
-      return reports.filter(
-        (report) => !report.reporter.indexOf(this.searchName)
-      );
-    },
-
-    filterProductsByCategory(reports) {
-      return reports.filter(
-        (report) => !report.status.indexOf(this.searchStatus)
-      );
-    },
     saveData() {},
   },
 };
