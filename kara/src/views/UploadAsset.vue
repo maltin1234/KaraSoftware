@@ -118,7 +118,20 @@ export default {
       width: "0px",
     };
   },
-  methods: {},
+  methods: {
+    ...mapActions(["addAsset"]),
+    submit() {
+      const registerAsset = {
+        serialNum: this.serialNum,
+        studName: this.studName,
+        location: this.location,
+        compType: this.compType,
+        status: this.status,
+        date: this.date,
+      };
+      this.addAsset(registerAsset);
+    },
+  },
 };
 </script>
 <style scoped>
