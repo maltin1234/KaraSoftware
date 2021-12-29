@@ -110,6 +110,7 @@
 // @ is an alias to /src
 //import SidebarComponent from "../src/components/SidebarComponent.vue";
 //import SidebarComponent from "../components/SidebarComponent.vue";
+import { mapActions } from "vuex";
 export default {
   name: "UploadAsset",
   components: {},
