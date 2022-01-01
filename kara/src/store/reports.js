@@ -13,6 +13,9 @@ export default {
     return state.reports.find(x => x.serialNum === serialNum)
     },
     reported: (state) => state.reports,
+    doneReports: (state) => state.reports.filter(report => report.done),
+    unfinReports: (state) => state.reports.filter(report => !report.done)
+
     //        getQuoteById: (state) => (id) => {
     //   console.log(state.quotes)
     //   return state.quotes.find(quote => quote.id === id)

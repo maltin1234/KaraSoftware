@@ -22,65 +22,25 @@
             >
               Primary
             </button>
-            <ul
-              class="list list-inline"
-              v-for="report in reports"
-              v-bind:key="report.id"
-            >
-              <div v-if="report.done === false && finished === false">
-                <li class="d-flex justify-content-between">
-                  <div class="d-flex flex-row align-items-center">
-                    <i class="fa fa-check-circle checkicon"></i>
-                    <div class="ml-2">
-                      <h6 class="mb-0">Kickoff meeting</h6>
-                      <div class="d-flex flex-row mt-1 text-black-50 date-time">
-                        <div>
-                          <i class="fa fa-calendar-o"></i
-                          ><span class="ml-2">{{ report.serialNum }}</span>
-                        </div>
-                        <div class="ml-3">
-                          <i class="fa fa-clock-o"></i
-                          ><span class="ml-2">6h</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="d-flex flex-row align-items-center">
-                    <div class="d-flex flex-column mr-2">
-                      <span class="date-time">{{ report.reporter }}</span>
-                    </div>
-                    <i class="fa fa-ellipsis-h"></i>
-                  </div>
-                </li>
-              </div>
-
-              <!-- v-else statement here  -->
-              <div v-else-if="report.done === true && finished === true">
-                <li class="d-flex justify-content-between">
-                  <div class="d-flex flex-row align-items-center">
-                    <i class="fa fa-check-circle checkicon"></i>
-                    <div class="ml-2">
-                      <h6 class="mb-0">Kickoff meeting</h6>
-                      <div class="d-flex flex-row mt-1 text-black-50 date-time">
-                        <div>
-                          <i class="fa fa-calendar-o"></i
-                          ><span class="ml-2">{{ report.serialNum }}</span>
-                        </div>
-                        <div class="ml-3">
-                          <i class="fa fa-clock-o"></i
-                          ><span class="ml-2">6h</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="d-flex flex-row align-items-center">
-                    <div class="d-flex flex-column mr-2">
-                      <span class="date-time">{{ report.reporter }}</span>
-                    </div>
-                    <i class="fa fa-ellipsis-h"></i>
-                  </div>
-                </li>
-              </div>
+            <ul class="list list-inline">
+              <li
+                class="d-flex justify-content-between"
+                v-for="report in filteredReports"
+                v-bind:key="report.id"
+              >
+                <div class="me-auto">{{ report.damage }}</div>
+                <div class="ms-auto">
+                  <select
+                    v-model="report.done"
+                    class="form-select"
+                    id="inlineFormSelectPref"
+                  >
+                    <option selected>Choose...</option>
+                    <option v-bind:value="true">True</option>
+                    <option v-bind:value="false">False</option>
+                  </select>
+                </div>
+              </li>
             </ul>
             <!-- v-else statement finished -->
           </div>
@@ -101,11 +61,14 @@ export default {
     };
   },
   computed: {
-    reports() {
+    filteredReports() {
       let userData = this.$store.state.reports.reports;
       console.log("user", userData);
-
-      return userData;
+      if (this.finished == false) {
+        return this.$store.getters.doneReports;
+      } else {
+        return this.$store.getters.unfinReports;
+      }
     },
   },
   created() {
