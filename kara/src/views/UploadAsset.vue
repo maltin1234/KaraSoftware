@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form>
+    <form @submit="submit">
       <div class="row">
         <div class="col col-6 mx-auto mt-2">
           <div class="form-group">
@@ -9,7 +9,7 @@
               type="text"
               class="form-control"
               id="formGroupExampleInput"
-              placeholder="Example input"
+              placeholder="SerialNum"
             />
           </div>
         </div>
@@ -20,7 +20,7 @@
               type="text"
               class="form-control"
               id="formGroupExampleInput2"
-              placeholder="Another input"
+              placeholder="Student Name"
             />
           </div>
         </div>
@@ -33,7 +33,7 @@
               type="text"
               class="form-control"
               id="formGroupExampleInput"
-              placeholder="Example input"
+              placeholder="Location"
             />
           </div>
         </div>
@@ -44,7 +44,7 @@
               type="text"
               class="form-control"
               id="formGroupExampleInput2"
-              placeholder="Another input"
+              placeholder="Comptype"
             />
           </div>
         </div>
@@ -84,7 +84,7 @@
         </div>
       </div>
       <div class="d-grid gap-2 col-6 mx-auto mb-4">
-        <button class="btn btn-dark mt-4" type="button">Submit</button>
+        <button class="btn btn-dark mt-4" type="submit">Submit</button>
       </div>
     </form>
   </div>
@@ -121,7 +121,8 @@ export default {
   },
   methods: {
     ...mapActions(["addAsset"]),
-    submit() {
+    submit(e) {
+      e.preventDefault();
       const registerAsset = {
         serialNum: this.serialNum,
         studName: this.studName,

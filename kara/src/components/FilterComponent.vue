@@ -112,33 +112,16 @@ export default {
       console.log("user", userData);
       console.log("searchName", this.searchName);
 
-      return this.filterProductsBySerial(
-        this.filterProductsByName(this.filterProductsByCategory(userData))
-      );
+      return userData
+        .filter((asset) => !asset.serialNum.indexOf(this.searchSerial))
+        .filter((asset) => !asset.studName.indexOf(this.searchName))
+        .filter((asset) => !asset.status.indexOf(this.searchStatus));
     },
   },
   created() {
     this.$store.dispatch("fetchAssets");
   },
-  methods: {
-    filterProductsBySerial(products) {
-      return products.filter(
-        (product) => !product.serialNum.indexOf(this.searchSerial)
-      );
-    },
-
-    filterProductsByName(products) {
-      return products.filter(
-        (product) => !product.studName.indexOf(this.searchName)
-      );
-    },
-
-    filterProductsByCategory(products) {
-      return products.filter(
-        (product) => !product.status.indexOf(this.searchStatus)
-      );
-    },
-  },
+  methods: {},
 };
 </script>
 

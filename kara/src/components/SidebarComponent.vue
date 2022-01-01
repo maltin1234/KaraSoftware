@@ -10,7 +10,6 @@
           aria-controls="offcanvasNavbar"
         >
           <span class="navbar-toggler-icon justify-content-start"></span>
-          ´
         </button>
         <a class="navbar-brand" href="#">Kara</a>
         <div

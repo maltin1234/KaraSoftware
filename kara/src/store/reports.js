@@ -25,14 +25,19 @@ export default {
             );
 
             commit('setReports', response.data);
-        },
+      },
+       async addReport({ commit }, payload) {
+      const response = await axios.post(
+          'http://localhost:3000/reported', payload);
+          
+      commit("newReports", response.data);
     },
+    },
+ 
+ 
     mutations: {
       setReports: (state, payload) => (state.reports = payload),
-    updateMessage: (state) => (serialNum) => {
-      console.log(state.reports)
-    return state.reports.find(x => x.serialNum === serialNum)
-    },
+       newReports: (state, report) => state.reports.unshift(report),
 }
     
     
