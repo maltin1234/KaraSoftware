@@ -31,17 +31,26 @@
                 <div class="me-auto">{{ report.damage }}</div>
                 <div class="ms-auto">
                   <select
-                    v-model="report.done"
+                    v-model="selected"
                     class="form-select"
                     id="inlineFormSelectPref"
                   >
-                    <option selected>Choose...</option>
-                    <option v-bind:value="true">True</option>
-                    <option v-bind:value="false">False</option>
+                    <option
+                      v-for="option in options"
+                      :value="option.value"
+                      v-bind:key="option.value"
+                    >
+                      {{ option.text }}
+                    </option>
                   </select>
                 </div>
               </li>
             </ul>
+            <div id="">
+              {{ message }}<br />
+              <input v-model="message" />
+            </div>
+
             <!-- v-else statement finished -->
           </div>
         </div>
@@ -51,6 +60,7 @@
 </template>
 
 <script>
+//import { mapActions } from "vuex";
 export default {
   name: "ReportComponent",
   data() {
@@ -58,6 +68,10 @@ export default {
       finished: false,
 
       userData: null,
+      options: [
+        { text: true, value: true },
+        { text: false, value: false },
+      ],
     };
   },
   computed: {
@@ -70,11 +84,41 @@ export default {
         return this.$store.getters.unfinReports;
       }
     },
+    message: {
+      get() {
+        console.log(this.$store.state.reports.message);
+        return this.$store.state.reports.message;
+      },
+      set(value) {
+        console.log(value);
+        this.$store.dispatch("updateReports", value);
+      },
+    },
+    selected: {
+      get() {
+        console.log(this.$store.state.reports.reports.done);
+        return this.$store.state.reports.reports.done;
+      },
+      set(value) {
+        this.$store.commit("updateReports", value);
+      },
+    },
   },
   created() {
     this.$store.dispatch("fetchReports");
   },
-  methods: {},
+  methods: {
+    // ...mapActions(["updateReports"]),
+    // onChange(event, report) {
+    //   console.log(event.target.value);
+    //   console.log(report);
+    //   const updTodo = {
+    //     id: report.id,
+    //     done: report.done,
+    //   };
+    //   this.updateReports(updTodo);
+    // },
+  },
 };
 </script>
 

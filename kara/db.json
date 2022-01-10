@@ -58,15 +58,7 @@
   "reported": [
     {
       "id": 1,
-      "serialNum": "5CDN098767",
-      "reporter": "Dys Svennis",
-      "location": "malmo",
-      "damage": "This is broken down",
-      "status": "In repair",
-      "priority": "5",
-      "date": "date",
-      " edit": null,
-      "done": true
+      "done": false
     },
     {
       "id": 2,
@@ -128,6 +120,5 @@
       " edit": null,
       "done": true
     }
-   
   ]
 }

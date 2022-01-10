@@ -1,24 +1,4 @@
 <template>
-  <div class="input-group mb-3 filter-one">
-    <select class="form-select" id="inputGroupSelect01">
-      <option selected>Choose class</option>
-      <option value="1">Nature</option>
-      <option value="2">Technical</option>
-      <option value="3">Samhälle</option>
-      <option value="3"></option>
-    </select>
-    <button type="button" class="btn btn-success">Filter</button>
-  </div>
-  <div class="input-group mb-3 filter-two">
-    <select class="form-select" id="inputGroupSelect01">
-      <option selected>Choose year</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-    <button type="button" class="btn btn-success">Filter</button>
-  </div>
-
   <div class="fixed-bottom">
     <nav aria-label="Page navigation example">
       <ul class="pagination">
@@ -34,13 +14,15 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">S/N</th>
-          <th scope="col">Stud Name</th>
+          <th scope="col">studName</th>
           <th scope="col">Location</th>
+
           <th scope="col">Status</th>
-          <th scope="col">CompType</th>
+          <th scope="col">compType</th>
           <th scope="col">Date</th>
         </tr>
       </thead>
+
       <thead>
         <tr>
           <th>
@@ -68,17 +50,96 @@
       </thead>
       <tbody>
         <tr v-for="product in filteredProducts" :key="product.id">
-          <th class="text-edit" scope="row">Edit</th>
-          <td>{{ product.serialNum }}</td>
-          <td>{{ product.studName }}</td>
-          <td>{{ product.location }}</td>
-          <td>{{ product.status }}</td>
-          <td>{{ product.compType }}</td>
-          <td>{{ product.date }}</td>
+          <td></td>
+
+          <td>
+            <div v-show="product.edit !== 'serialNum'">
+              <label @dblclick="product.edit = 'serialNum'">
+                @{{ product.serialNum }}
+              </label>
+            </div>
+            <input
+              name="serialNum"
+              v-show="product.edit == 'serialNum'"
+              v-model="serialNum"
+              v-on:blur="product.edit = ''"
+              @keyup.enter="product.edit = ''"
+            />
+          </td>
+          <td>
+            <div v-show="product.edit !== 'studName'">
+              <label @dblclick="product.edit = 'studName'">
+                @{{ product.studName }}
+              </label>
+            </div>
+            <input
+              name="studName"
+              v-show="product.edit == 'studName'"
+              v-model="product.studName"
+              v-on:blur="product.edit = ''"
+              @keyup.enter="product.edit = ''"
+            />
+          </td>
+          <td>
+            <div v-show="product.edit !== 'location'">
+              <label @dblclick="product.edit = 'location'">
+                @{{ product.location }}
+              </label>
+            </div>
+            <input
+              name="location"
+              v-show="product.edit == 'location'"
+              v-model="product.location"
+              v-on:blur="product.edit = ''"
+              @keyup.enter="product.edit = ''"
+            />
+          </td>
+
+          <td>
+            <div v-show="product.edit !== 'status'">
+              <label @dblclick="product.edit = 'status'">
+                @{{ product.status }}
+              </label>
+            </div>
+            <input
+              name="status"
+              v-show="product.edit == 'status'"
+              v-model="product.status"
+              v-on:blur="product.edit = ''"
+              @keyup.enter="product.edit = ''"
+            />
+          </td>
+          <td>
+            <div v-show="product.edit !== 'compType'">
+              <label @dblclick="product.edit = 'compType'">
+                @{{ product.compType }}
+              </label>
+            </div>
+            <input
+              name="compType"
+              v-show="product.edit == 'compType'"
+              v-model="product.compType"
+              v-on:blur="product.edit = ''"
+              @keyup.enter="product.edit = ''"
+            />
+          </td>
+          <td>
+            <div v-show="product.edit !== 'date'">
+              <label @dblclick="product.edit = 'date'">
+                @{{ product.date }}
+              </label>
+            </div>
+            <input
+              name="date"
+              v-show="product.edit == 'date'"
+              v-model="product.date"
+              v-on:blur="product.edit = ''"
+              @keyup.enter="product.edit = ''"
+            />
+          </td>
         </tr>
       </tbody>
     </table>
-    <button @click="test()"></button>
   </div>
 </template>
 
