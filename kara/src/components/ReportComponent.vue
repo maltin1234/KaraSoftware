@@ -100,6 +100,8 @@ export default {
         return this.$store.state.reports.reports.done;
       },
       set(value) {
+        //console.log(this.$store.state.reports.reports);
+
         this.$store.commit("updateReports", value);
       },
     },
