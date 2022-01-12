@@ -58,6 +58,14 @@
   "reported": [
     {
       "id": 1,
+      "serialNum": "5CDN098BHBD",
+      "reporter": "Linoel Messi",
+      "location": "malmo",
+      "damage": "This is broken down",
+      "status": "In repair",
+      "priority": "5",
+      "date": "date",
+      " edit": null,
       "done": false
     },
     {
@@ -119,6 +127,42 @@
       "date": "date",
       " edit": null,
       "done": true
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "id": 10
+    },
+    {
+      "id": 11
+    },
+    {
+      "serialNum": "bshe",
+      "studName": "ndhwds3",
+      "damage": "dnhwbdh3d",
+      "id": 12
+    },
+    {
+      "date": "date",
+      " edit": null,
+      "done": false,
+      "id": 13
+    },
+    {
+      "serialNum": "San Francisco",
+      "damage": "fwr",
+      "status": "fw",
+      "date": "date",
+      " edit": null,
+      "done": false,
+      "id": 14
     }
   ]
 }

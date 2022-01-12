@@ -31,7 +31,7 @@
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
                 <a
-                  class="nav-link active bg-dark mb-4"
+                  class="nav-link active bg-dark mb-4 rounded-pill"
                   aria-current="page"
                   href="#FilterPage"
                   >Change list with asset information</a
@@ -40,7 +40,7 @@
 
               <li class="nav-item">
                 <a
-                  class="nav-link active bg-dark mb-4"
+                  class="nav-link active bg-dark mb-4 rounded-pill"
                   aria-current="page"
                   href="#UploadAsset"
                   >Upload asset information</a
@@ -48,7 +48,7 @@
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link active bg-dark mb-4"
+                  class="nav-link active bg-dark mb-4 rounded-pill"
                   aria-current="page"
                   href="#"
                   >Statistic Page</a
@@ -56,7 +56,7 @@
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link active bg-dark mb-4"
+                  class="nav-link active bg-dark mb-4 rounded-pill"
                   aria-current="page"
                   href="#ReportAsset"
                   >Report damaged assets
@@ -64,7 +64,7 @@
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link active bg-dark mb-4"
+                  class="nav-link active bg-dark mb-4 rounded-pill"
                   aria-current="page"
                   href="#ReportedList"
                   >List of reported errands

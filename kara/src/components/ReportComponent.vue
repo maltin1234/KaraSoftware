@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="container mt-5">
+    <div class="container-report mt-5 mx-auto">
       <div class="row">
         <div class="col-md-12">
           <div
@@ -9,7 +9,9 @@
             <div>
               <i class="fa fa-clock-o"></i><span class="ml-2">11h 25m</span>
             </div>
-            <div><span class="activity-done">Done Activities</span></div>
+            <div v-if="!finished">
+              <span class="activity-done">Done Activities</span>
+            </div>
             <div class="icons">
               <i class="fa fa-search"></i><i class="fa fa-ellipsis-h"></i>
             </div>
@@ -20,7 +22,7 @@
               @click="finished = !finished"
               class="btn btn-primary"
             >
-              Primary
+              Click
             </button>
             <ul class="list list-inline">
               <li
@@ -28,10 +30,14 @@
                 v-for="report in filteredReports"
                 v-bind:key="report.id"
               >
-                <div class="me-auto">{{ report.damage }}</div>
+                <div class="me-auto">
+                  {{ report.damage }}
+                  <div class="me-auto">{{ report.reporter }}</div>
+                </div>
+
                 <div class="ms-auto">
                   <select
-                    v-model="selected"
+                    v-model="report.done"
                     class="form-select"
                     id="inlineFormSelectPref"
                   >
@@ -46,10 +52,6 @@
                 </div>
               </li>
             </ul>
-            <div id="">
-              {{ message }}<br />
-              <input v-model="message" />
-            </div>
 
             <!-- v-else statement finished -->
           </div>
@@ -83,27 +85,6 @@ export default {
       } else {
         return this.$store.getters.unfinReports;
       }
-    },
-    message: {
-      get() {
-        console.log(this.$store.state.reports.message);
-        return this.$store.state.reports.message;
-      },
-      set(value) {
-        console.log(value);
-        this.$store.dispatch("updateReports", value);
-      },
-    },
-    selected: {
-      get() {
-        console.log(this.$store.state.reports.reports.done);
-        return this.$store.state.reports.reports.done;
-      },
-      set(value) {
-        //console.log(this.$store.state.reports.reports);
-
-        this.$store.commit("updateReports", value);
-      },
     },
   },
   created() {
@@ -170,6 +151,9 @@ body {
 
 .profile-image img {
   margin-left: 3px;
+}
+.container-report {
+  width: 50%;
 }
 </style>
 <style lang="scss"></style>

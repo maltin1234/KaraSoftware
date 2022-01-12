@@ -18,19 +18,17 @@
               placeholder="Type to search..."
             />
             <datalist id="datalistOptions">
-              <option value="San Francisco"></option>
-              <option value="New York"></option>
-              <option value="Seattle"></option>
-              <option value="Los Angeles"></option>
-              <option value="Chicago"></option>
+              <option value="837826327"></option>
+              <option value="88721837"></option>
+              <option value="2873823P"></option>
+              <option value="PC12892"></option>
+              <option value="PC18273"></option>
             </datalist>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <label for="exampleDataList" class="form-label"
-              >Input student name</label
-            >
+            <label for="exampleDataList" class="form-label">student</label>
             <input
               v-model="studName"
               class="form-control"
@@ -38,18 +36,12 @@
               id="exampleDataList"
               placeholder="Type to search..."
             />
-            <datalist id="datalistOptions">
-              <option value="San Francisco"></option>
-              <option value="New York"></option>
-              <option value="Seattle"></option>
-              <option value="Los Angeles"></option>
-              <option value="Chicago"></option>
-            </datalist>
+            <datalist id="datalistOptions"> </datalist>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <label for="exampleDataList" class="form-label">Input date</label>
+            <label for="exampleDataList" class="form-label">Status</label>
             <input
               v-model="status"
               class="form-control"
@@ -57,13 +49,33 @@
               id="exampleDataList"
               placeholder="Type to search..."
             />
-            <datalist id="datalistOptions">
-              <option value="San Francisco"></option>
-              <option value="New York"></option>
-              <option value="Seattle"></option>
-              <option value="Los Angeles"></option>
-              <option value="Chicago"></option>
-            </datalist>
+            <datalist id="datalistOptions"> </datalist>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="exampleDataList" class="form-label">Priority</label>
+            <input
+              v-model="priority"
+              class="form-control"
+              list="datalistOptions"
+              id="exampleDataList"
+              placeholder="Type to search..."
+            />
+            <datalist id="datalistOptions"> </datalist>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="exampleDataList" class="form-label">Who reported</label>
+            <input
+              v-model="reporter"
+              class="form-control"
+              list="datalistOptions"
+              id="exampleDataList"
+              placeholder="Type to search..."
+            />
+            <datalist id="datalistOptions"> </datalist>
           </div>
         </div>
         <div class="mb-3">
@@ -102,8 +114,14 @@ export default {
       e.preventDefault();
       const registerReport = {
         serialNum: this.serialNum,
-        studName: this.studName,
+        reporter: this.reporter,
+        location: this.location,
         damage: this.damage,
+        status: this.status,
+        priority: this.priority,
+        date: "date",
+        " edit": null,
+        done: false,
       };
       this.addReport(registerReport);
     },

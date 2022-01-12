@@ -33,22 +33,22 @@ export default {
 
             commit('setReports', response.data);
       },
-      //  async addReport({ commit }, payload) {
-      // const response = await axios.post(
-      //     'http://localhost:3000/reported', payload);
+       async addReport({ commit }, payload) {
+      const response = await axios.post(
+          'http://localhost:3000/reported', payload);
           
-      // commit("newReports", response.data);
-      // },
-  //        async updateReports({ commit }, value) {
-  //   const response = await axios.put(
-  //     `http://localhost:3000/reported/${value.id}`,
-  //     value
-  //   );
+      commit("newReports", response.data);
+      },
+         async updateReports({ commit }, value) {
+    const response = await axios.put(
+      `http://localhost:3000/reported/${value.id}`,
+      value
+    );
 
-  //   console.log(response.data);
+    console.log(response.data);
 
-  //   commit('setReports', response.data);
-  // }
+    commit('setReports', response.data);
+  }
     },
  
  
