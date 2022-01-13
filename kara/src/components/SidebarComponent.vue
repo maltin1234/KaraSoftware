@@ -13,7 +13,7 @@
         </button>
         <a class="navbar-brand" href="#">Kara</a>
         <div
-          class="offcanvas offcanvas-start"
+          class="offcanvas offcanvas-start sidebar-nav"
           tabindex="-1"
           id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel"
@@ -99,4 +99,22 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+:root {
+  --offcanvas-width: 470px;
+}
+.sidebar-nav {
+  width: var(--offcanvas-width);
+}
+@media (min-width: 992px) {
+  .sidebar-nav {
+    transform: none;
+    visibility: visible !important;
+    top: 60px;
+    width: 400px;
+  }
+  .offcanvas-body {
+    background-color: black;
+  }
+}
+</style>
