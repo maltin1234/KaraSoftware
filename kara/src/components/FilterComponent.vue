@@ -190,7 +190,7 @@ export default {
 <style scoped>
 .pagination > li > a {
   background-color: rgb(15, 13, 13);
-  color: #dcdceb;
+  color: #eeeeee;
 }
 
 .pagination > li > a:focus,
@@ -232,6 +232,9 @@ export default {
 }
 .text-edit {
   color: rgb(21, 193, 53);
+}
+.fixed-bottom {
+  top: 50%;
 }
 </style>
 <style lang="scss"></style>

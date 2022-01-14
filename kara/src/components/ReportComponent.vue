@@ -12,6 +12,9 @@
             <div v-if="!finished">
               <span class="activity-done">Done Activities</span>
             </div>
+            <div v-else-if="finished === true">
+              <span class="activity-done">Not Done Activities</span>
+            </div>
             <div class="icons">
               <i class="fa fa-search"></i><i class="fa fa-ellipsis-h"></i>
             </div>
@@ -34,8 +37,20 @@
                   {{ report.damage }}
                   <div class="me-auto">{{ report.reporter }}</div>
                 </div>
-
                 <div class="ms-auto">
+                  Priority
+                  <select
+                    v-model="report.priority"
+                    class="form-select"
+                    id="inlineFormSelectPref"
+                  >
+                    <option :value="report.priority">
+                      {{ report.priority }}
+                    </option>
+                  </select>
+                </div>
+                <div class="ms-auto">
+                  Finished
                   <select
                     v-model="report.done"
                     class="form-select"
@@ -137,7 +152,7 @@ body {
   border: 1px solid #e3dada;
   margin-top: 12px;
   border-radius: 5px;
-  background: #fff;
+  background: #eeeeee;
 }
 
 .checkicon {
