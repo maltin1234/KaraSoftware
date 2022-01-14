@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="container-report mt-5 mx-auto">
+    <div class="container-report mt-5 ms-auto">
       <div class="row">
         <div class="col-md-12">
           <div

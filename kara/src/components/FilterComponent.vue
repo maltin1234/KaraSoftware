@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed-bottom">
+  <div class="container-fluid filter-component d-flex">
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -190,7 +190,7 @@ export default {
 <style scoped>
 .pagination > li > a {
   background-color: rgb(15, 13, 13);
-  color: #dcdceb;
+  color: #eeeeee;
 }
 
 .pagination > li > a:focus,
@@ -232,6 +232,9 @@ export default {
 }
 .text-edit {
   color: rgb(21, 193, 53);
+}
+.filter-component {
+  width: calc(100% - 1000px);
 }
 </style>
 <style lang="scss"></style>
