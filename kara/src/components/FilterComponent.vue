@@ -5,6 +5,37 @@
         <div class="card">
           <div class="card-body">
             <h4 class="header-title">Data Table Default</h4>
+            <div class="row">
+              <div class="col-sm-12 col-md-6 my-col">
+                <div class="dataTables_length" id="dataTable_length">
+                  <label
+                    >Show
+                    <select
+                      name="dataTable_length"
+                      aria-controls="dataTable"
+                      class="custom-select custom-select-sm form-control form-control-sm"
+                    >
+                      <option value="10">10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select>
+                    entries</label
+                  >
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 my-col">
+                <div id="dataTable_filter" class="dataTables_filter">
+                  <label
+                    >Search:<input
+                      type="search"
+                      class="form-control form-control-sm"
+                      placeholder=""
+                      aria-controls="dataTable"
+                  /></label>
+                </div>
+              </div>
+            </div>
             <table id="example" class="table table-striped" style="width: 100%">
               <thead class="">
                 <tr>
@@ -21,7 +52,16 @@
 
               <tbody>
                 <tr v-for="product in filteredProducts" :key="product.id">
-                  <td></td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-outline-success"
+                      @click="sub(product.id)"
+                    >
+                      {{ edit === id ? "Save" : "Edit" }}
+                      Edit
+                    </button>
+                  </td>
 
                   <td>
                     <div v-show="product.edit !== 'serialNum'">
@@ -133,6 +173,7 @@ export default {
       searchStatus: "",
       searchComptyp: "",
       searchDate: "",
+      edit: null,
       columns: [
         "id",
         "serialNum",
@@ -201,9 +242,13 @@ td {
   word-wrap: break-word;
 }
 .card {
-  width: 1000px !important;
+  width: 1100px !important;
   margin-left: 400px !important;
-  height: 500px;
+  height: 600px;
+}
+.my-col {
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 </style>
 <style lang="scss"></style>
