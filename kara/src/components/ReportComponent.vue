@@ -1,59 +1,66 @@
 <template>
   <div class="container">
-    <div class="container-report mt-5 ms-auto">
+    <div class="container-report mt-5 mx-auto">
       <div class="row">
-        <div class="col-md-12">
-          <div
-            class="d-flex justify-content-between align-items-center activity"
-          >
-            <div>
-              <i class="fa fa-clock-o"></i><span class="ml-2">11h 25m</span>
-            </div>
-            <div v-if="!finished">
-              <span class="activity-done">Done Activities</span>
-            </div>
-            <div class="icons">
-              <i class="fa fa-search"></i><i class="fa fa-ellipsis-h"></i>
-            </div>
-          </div>
-          <div class="mt-3">
-            <button
-              type="button"
-              @click="finished = !finished"
-              class="btn btn-primary"
-            >
-              Click
-            </button>
-            <ul class="list list-inline">
-              <li
-                class="d-flex justify-content-between"
-                v-for="report in filteredReports"
-                v-bind:key="report.id"
+        <div class="card">
+          <div class="card-body">
+            <div class="col-md-12">
+              <div
+                class="d-flex justify-content-between align-items-center activity"
               >
-                <div class="me-auto">
-                  {{ report.damage }}
-                  <div class="me-auto">{{ report.reporter }}</div>
+                <div>
+                  <i class="fa fa-clock-o"></i><span class="ml-2">11h 25m</span>
                 </div>
-
-                <div class="ms-auto">
-                  <select
-                    v-model="report.done"
-                    class="form-select"
-                    id="inlineFormSelectPref"
+                <div v-if="!finished">
+                  <span class="activity-done">Done Activities</span>
+                </div>
+                <div v-else-if="finished === true">
+                  <span class="activity-done">Not Done Activities</span>
+                </div>
+                <div class="icons">
+                  <i class="fa fa-search"></i><i class="fa fa-ellipsis-h"></i>
+                </div>
+              </div>
+              <div class="mt-3">
+                <button
+                  type="button"
+                  @click="finished = !finished"
+                  class="btn btn-primary"
+                >
+                  Click
+                </button>
+                <ul class="list list-inline">
+                  <li
+                    class="d-flex justify-content-between"
+                    v-for="report in filteredReports"
+                    v-bind:key="report.id"
                   >
-                    <option
-                      v-for="option in options"
-                      :value="option.value"
-                      v-bind:key="option.value"
-                    >
-                      {{ option.text }}
-                    </option>
-                  </select>
-                </div>
-              </li>
-            </ul>
+                    <div class="me-auto">
+                      {{ report.damage }}
+                      <div class="me-auto">{{ report.reporter }}</div>
+                    </div>
 
-            <!-- v-else statement finished -->
+                    <div class="ms-auto">
+                      <select
+                        v-model="report.done"
+                        class="form-select"
+                        id="inlineFormSelectPref"
+                      >
+                        <option
+                          v-for="option in options"
+                          :value="option.value"
+                          v-bind:key="option.value"
+                        >
+                          {{ option.text }}
+                        </option>
+                      </select>
+                    </div>
+                  </li>
+                </ul>
+
+                <!-- v-else statement finished -->
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,107 +1,102 @@
 <template>
   <div class="container">
-    <form @submit="submit">
-      <div class="row">
-        <div class="col col-6 mx-auto mt-2">
-          <div class="form-group">
-            <label for="formGroupExampleInput">#S/N</label>
-            <input
-              type="text"
-              class="form-control"
-              id="formGroupExampleInput"
-              placeholder="SerialNum"
-            />
-          </div>
-        </div>
-        <div class="col col-6 mx-auto mt-2">
-          <div class="form-group">
-            <label for="formGroupExampleInput2">Studentname</label>
-            <input
-              type="text"
-              class="form-control"
-              id="formGroupExampleInput2"
-              placeholder="Student Name"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col col-6 mx-auto">
-          <div class="form-group">
-            <label for="formGroupExampleInput">Location</label>
-            <input
-              type="text"
-              class="form-control"
-              id="formGroupExampleInput"
-              placeholder="Location"
-            />
-          </div>
-        </div>
-        <div class="col col-6 mx-auto">
-          <div class="form-group">
-            <label for="formGroupExampleInput2">CompType</label>
-            <input
-              type="text"
-              class="form-control"
-              id="formGroupExampleInput2"
-              placeholder="Comptype"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <label for="exampleDataList" class="form-label"
-            >Status on computer</label
-          >
-          <input
-            class="form-control"
-            list="datalistOptions"
-            id="exampleDataList"
-            placeholder="Type to search..."
-          />
-          <datalist id="datalistOptions">
-            <option value="Ongoing repair"></option>
-            <option value="Damaged turned in"></option>
-            <option value="Borrowed"></option>
-            <option value="Not Borrowed"></option>
-            <option value="Needs to be sent for repair"></option>
-          </datalist>
-        </div>
-      </div>
+    <div class="row">
+      <div class="card">
+        <div class="card-body">
+          <form @submit="submit">
+            <div class="row">
+              <div class="col col-6 mx-auto mt-2">
+                <div class="form-group">
+                  <label for="formGroupExampleInput">#S/N</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="formGroupExampleInput"
+                    placeholder="SerialNum"
+                  />
+                </div>
+              </div>
+              <div class="col col-6 mx-auto mt-2">
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">Studentname</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="formGroupExampleInput2"
+                    placeholder="Student Name"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-6 mx-auto">
+                <div class="form-group">
+                  <label for="formGroupExampleInput">Location</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="formGroupExampleInput"
+                    placeholder="Location"
+                  />
+                </div>
+              </div>
+              <div class="col col-6 mx-auto">
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">CompType</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="formGroupExampleInput2"
+                    placeholder="Comptype"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="exampleDataList" class="form-label"
+                  >Status on computer</label
+                >
+                <input
+                  class="form-control"
+                  list="datalistOptions"
+                  id="exampleDataList"
+                  placeholder="Type to search..."
+                />
+                <datalist id="datalistOptions">
+                  <option value="Ongoing repair"></option>
+                  <option value="Damaged turned in"></option>
+                  <option value="Borrowed"></option>
+                  <option value="Not Borrowed"></option>
+                  <option value="Needs to be sent for repair"></option>
+                </datalist>
+              </div>
+            </div>
 
-      <div class="row">
-        <div class="col col-12 mx-auto">
-          <div class="form-group">
-            <label for="formGroupExampleInput2">Date</label>
-            <input
-              type="text"
-              class="form-control"
-              id="formGroupExampleInput2"
-              placeholder="Another input"
-            />
-          </div>
+            <div class="row">
+              <div class="col col-12 mx-auto">
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">Date</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="formGroupExampleInput2"
+                    placeholder="Another input"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto mb-4">
+              <button
+                class="btn btn-outline-success rounded-pill mt-4"
+                type="submit"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-      <div class="d-grid gap-2 col-6 mx-auto mb-4">
-        <button class="btn btn-dark mt-4" type="submit">Submit</button>
-      </div>
-    </form>
-  </div>
-
-  <div class="card">
-    <div class="card-body bg-dark text-light mb-4">
-      Choose to upload asset information via csv/excel files
-    </div>
-  </div>
-  <div class="input-group file-upload mb-3 mx-auto">
-    <label class="input-group-text" for="inputGroupFile01">Upload</label>
-    <input type="file" class="form-control" id="inputGroupFile01" />
-  </div>
-  <div class="card instruction-card mx-auto">
-    <div class="card-body mb-4">
-      You can upload a a csv file with class names and then in change assets you
-      can add more information
     </div>
   </div>
 </template>
@@ -145,6 +140,13 @@ export default {
 }
 .instruction-card {
   width: 30%;
-  background-color: ghostwhite;
+  background-color: #b2b6b9;
+}
+.card {
+  padding: 4.5rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+}
+.btn {
 }
 </style>
