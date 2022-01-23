@@ -3,29 +3,32 @@
     {
       "id": 1,
       "serialNum": "5CDN098767",
-      "studName": "James Hardy",
-      "location": "malmo",
+      "studName": "Jon Malkovic",
+      "location": "ndjed",
       "status": "In repair",
       "compType": "hp",
-      "date": "date"
+      "date": "date",
+      "edit": false
     },
     {
       "id": 2,
       "serialNum": "5CDN098BHBD",
-      "studName": "Jon Jonasson",
+      "studName": "Johan Persson",
       "location": "malmo",
       "status": "Returned",
       "compType": "hp",
-      "date": "date"
+      "date": "date",
+      "edit": false
     },
     {
       "id": 3,
       "serialNum": "PX09CTY",
-      "studName": "Tom Hardy",
+      "studName": "James Adolf",
       "location": "malmo",
       "status": "Borrowed",
       "compType": "hp",
-      "date": "date"
+      "date": "date",
+      "edit": false
     },
     {
       "id": 4,
@@ -34,7 +37,8 @@
       "location": "malmo",
       "status": "Needs repair",
       "compType": "hp",
-      "date": "date"
+      "date": "date",
+      "edit": false
     },
     {
       "id": 5,
@@ -43,7 +47,8 @@
       "location": "malmo",
       "status": "Needs repair",
       "compType": "hp",
-      "date": "date"
+      "date": "date",
+      "edit": false
     },
     {
       "id": 6,
@@ -52,9 +57,9 @@
       "location": "malmo",
       "status": "Needs repair",
       "compType": "hp",
-      "date": "date"
+      "date": "date",
+      "edit": false
     }
-  
   ],
   "reported": [
     {

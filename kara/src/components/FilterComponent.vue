@@ -4,7 +4,7 @@
       <div class="col-12 mt-5">
         <div class="card">
           <div class="card-body">
-            <h4 class="header-title">Data Table Default</h4>
+            <h4 class="header-title">Students computers</h4>
             <div class="row">
               <div class="col-sm-12 col-md-6 my-col">
                 <div class="dataTables_length" id="dataTable_length">
@@ -32,6 +32,7 @@
                       class="form-control form-control-sm"
                       placeholder=""
                       aria-controls="dataTable"
+                      v-model="searchName"
                   /></label>
                 </div>
               </div>
@@ -56,97 +57,54 @@
                     <button
                       type="button"
                       class="btn btn-outline-success"
-                      @click="sub(product.id)"
+                      @click="sub(product)"
                     >
-                      {{ edit === id ? "Save" : "Edit" }}
                       Edit
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary"
+                      @click="view(product)"
+                    >
+                      View
                     </button>
                   </td>
 
                   <td>
-                    <div v-show="product.edit !== 'serialNum'">
-                      <label @dblclick="product.edit = 'serialNum'">
-                        @{{ product.serialNum }}
-                      </label>
-                    </div>
-                    <input
-                      name="serialNum"
-                      v-show="product.edit == 'serialNum'"
-                      v-model="serialNum"
-                      v-on:blur="product.edit = ''"
-                      @keyup.enter="product.edit = ''"
-                    />
-                  </td>
-                  <td>
-                    <div v-show="product.edit !== 'studName'">
-                      <label @dblclick="product.edit = 'studName'">
-                        @{{ product.studName }}
-                      </label>
-                    </div>
-                    <input
-                      name="studName"
-                      v-show="product.edit == 'studName'"
-                      v-model="product.studName"
-                      v-on:blur="product.edit = ''"
-                      @keyup.enter="product.edit = ''"
-                    />
-                  </td>
-                  <td>
-                    <div v-show="product.edit !== 'location'">
-                      <label @dblclick="product.edit = 'location'">
-                        @{{ product.location }}
-                      </label>
-                    </div>
-                    <input
-                      name="location"
-                      v-show="product.edit == 'location'"
-                      v-model="product.location"
-                      v-on:blur="product.edit = ''"
-                      @keyup.enter="product.edit = ''"
-                    />
+                    {{ product.serialNum }}
                   </td>
 
                   <td>
-                    <div v-show="product.edit !== 'status'">
-                      <label @dblclick="product.edit = 'status'">
-                        @{{ product.status }}
-                      </label>
+                    <div v-if="product.edit">
+                      <input v-model="product.studName" />
                     </div>
-                    <input
-                      name="status"
-                      v-show="product.edit == 'status'"
-                      v-model="product.status"
-                      v-on:blur="product.edit = ''"
-                      @keyup.enter="product.edit = ''"
-                    />
+                    <div v-else>{{ product.studName }}</div>
                   </td>
                   <td>
-                    <div v-show="product.edit !== 'compType'">
-                      <label @dblclick="product.edit = 'compType'">
-                        @{{ product.compType }}
-                      </label>
+                    <div v-if="product.edit">
+                      <input v-model="product.location" />
                     </div>
-                    <input
-                      name="compType"
-                      v-show="product.edit == 'compType'"
-                      v-model="product.compType"
-                      v-on:blur="product.edit = ''"
-                      @keyup.enter="product.edit = ''"
-                    />
+                    <div v-else>{{ product.location }}</div>
+                  </td>
+
+                  <td>
+                    <div v-if="product.edit">
+                      <input v-model="product.status" />
+                    </div>
+                    <div v-else>{{ product.status }}</div>
                   </td>
                   <td>
-                    <div v-show="product.edit !== 'date'">
-                      <label @dblclick="product.edit = 'date'">
-                        @{{ product.date }}
-                      </label>
+                    <div v-if="product.edit">
+                      <input v-model="product.compType" />
                     </div>
-                    <input
-                      name="date"
-                      v-show="product.edit == 'date'"
-                      v-model="product.date"
-                      v-on:blur="product.edit = ''"
-                      @keyup.enter="product.edit = ''"
-                    />
+                    <div v-else>{{ product.compType }}</div>
+                  </td>
+
+                  <td>
+                    <div v-if="product.edit">
+                      <input v-model="product.date" />
+                    </div>
+                    <div v-else>{{ product.date }}</div>
                   </td>
                 </tr>
               </tbody>
@@ -161,7 +119,7 @@
 <script>
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { mapActions } from "vuex";
 export default {
   name: "FilterComponent",
   data() {
@@ -193,13 +151,34 @@ export default {
       console.log("user", userData);
       console.log("searchName", this.searchName);
 
-      return userData;
+      return this.$store.state.assets.assets.filter(
+        (asset) =>
+          !asset.serialNum.indexOf(this.searchName) ||
+          !asset.studName.indexOf(this.searchName)
+      );
     },
   },
   created() {
     this.$store.dispatch("fetchAssets");
   },
-  methods: {},
+  methods: {
+    ...mapActions(["updateTodo"]),
+    sub(data) {
+      data.edit = !data.edit;
+      const updTodo = {
+        id: data.id,
+
+        serialNum: data.serialNum,
+        studName: data.studName,
+        location: data.location,
+        status: data.status,
+        compType: data.compType,
+        date: data.date,
+        edit: data.edit,
+      };
+      this.updateTodo(updTodo);
+    },
+  },
 };
 </script>
 
